@@ -1,23 +1,8 @@
-/* cvpendulum.c -- pendulum demo
-* dbindel, Apr 2009.
-*
-* Adapted from demo/cvode/serial/cdenx.c
-* by Scott Cohen, Alan Hindmarsh, and Radu Serban.
-*
-* For more info, see CVODE web page:
-* https://computation.llnl.gov/casc/sundials/main.html
+/*
+* Lorenz equation:
 *
 *
-* Pendulum equation (from 2nd order to 1st order):
 *
-*                            --
-*                            |  D F = W
-*                            |   t
-*                            |
-*   D  F + sin( F ) = 0  --> |
-*    tt                      |  D  W = -sin(F)
-*                            |   t
-*                            --
 */
 
 #include <stdio.h>
@@ -54,7 +39,7 @@ int main(int argc, char** argv)
 {
     int N = 200;
     realtype T0 = 0;
-    realtype Tfinal = 10;
+    realtype Tfinal = 100;
     realtype theta0 = atof(argv[1]);
     realtype reltol = 1e-6;
     realtype abstol = 1e-8;
