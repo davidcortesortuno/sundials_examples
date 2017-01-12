@@ -2,32 +2,33 @@ This example was compiled by doing:
 
 1. Compile the libraries:
 
-```
-gcc -c src/sundials/sundials_math.c -Iinclude 
-gcc -c src/sundials/sundials_band.c -Iinclude 
-```
+   ```
+   gcc -c src/sundials/sundials_math.c -Iinclude 
+   gcc -c src/sundials/sundials_band.c -Iinclude 
+   ```
 
-This generates the `.o` files (the -c flag compiles but does not link)
+   This generates the `.o` files (the -c flag compiles but does not link)
 
 2. Compile the example file:
 
-```
-gcc -Wall -c cvAdvDiff_bnd.c -o test.o -Iinclude -L$LD_LIBRARY_PATH -lm -lsundials_cvodes -lsundials_ida -lsundials_kinsol -lsundials_nvecserial
-```
+   ```
+   gcc -Wall -c cvAdvDiff_bnd.c -o test.o -Iinclude -L$LD_LIBRARY_PATH -lm -lsundials_cvodes -lsundials_ida -lsundials_kinsol -lsundials_nvecserial
+   ```
 
-This generates the `test.o` file
+   This generates the `test.o` file
 
 3. Now link all the `.o` files including the libraries and headers:
 
-```
-gcc -Wall test.o sundials_math.o sundials_band.o -o test -Iinclude -L$LD_LIBRARY_PATH -lm -lsundials_cvodes -lsundials_ida -lsundials_kinsol -lsundials_nvecserial
-```
+   ```
+   gcc -Wall test.o sundials_math.o sundials_band.o -o test -Iinclude -L$LD_LIBRARY_PATH -lm -lsundials_cvodes -lsundials_ida -lsundials_kinsol -lsundials_nvecserial
+   ```
 
 4. Execute the `test`: `./test` 
 
 
-Notes
-~~~~~
+## Notes
+
+
 We can create the shared libraries:
 
 ```
