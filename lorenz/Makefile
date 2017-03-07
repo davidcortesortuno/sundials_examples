@@ -5,7 +5,7 @@ all:
 	make run
 	make plot
 compile:
-	gcc -Wall lorenz.c -o lorenz -lsundials_cvodes -lsundials_nvecserial -lm
+	gcc -Wall lorenz.c -o lorenz -O3 -I/usr/include -L/usr/lib -lsundials_cvode -lsundials_nvecserial -lm
 run:
 	./lorenz > lorenz.txt
 plot:

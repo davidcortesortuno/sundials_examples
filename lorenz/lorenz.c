@@ -104,6 +104,7 @@ int main(int argc, char** argv)
      * Vector. Its only argument is the vector length.
      * */
     y = N_VNew_Serial(3);
+    if(check_flag((void*)y, "N_VNew_Serial", 0)) return(1);
 
     /* INITIAL VALUES
      * The assignment NV_Ith_S(v,i) = r sets the value of the i-th component of
@@ -121,18 +122,12 @@ int main(int argc, char** argv)
 
     /* Set up solver */
     cvode_mem = CVodeCreate(CV_ADAMS, CV_FUNCTIONAL);
-    if (cvode_mem == 0) {
-        fprintf(stderr, "Error in CVodeMalloc: could not allocate\n");
-        return -1;
-    }
+    if(check_flag((void *)cvode_mem, "CVodeCreate", 0)) return(1);
 
     /* Call CVodeMalloc to initialize the integrator memory */
     /* flag = CVodeMalloc(cvode_mem, f, T0, y, CV_SS, reltol, &abstol); */
     flag = CVodeInit(cvode_mem, f, T0, y);
-    if (flag < 0) {
-        fprintf(stderr, "Error in CVodeMalloc: %d\n", flag);
-        return -1;
-    }
+    if(check_flag(&flag, "CVodeInit", 1)) return(1);
 
     flag = CVodeSStolerances(cvode_mem, reltol, abstol);
 
